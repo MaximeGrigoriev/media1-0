@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, ChevronDown, Move, MoreHorizontal } from 'lucide-react';
+import { Upload, ChevronDown, Move, MoreHorizontal, Type } from 'lucide-react';
 
 interface PropertiesPanelProps {
   selectedComponent: any;
