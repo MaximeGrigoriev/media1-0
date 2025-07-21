@@ -49,7 +49,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     opacity: 100,
     align: 'Center',
     showAvatar: true,
-    customText: ''
+    customText: 'Title'
   });
 
   const [mediaType, setMediaType] = useState('Image / Animation');

@@ -12,7 +12,7 @@ function App() {
   const [mediaType, setMediaType] = useState<string>('Image / Animation');
   const [showAvatar, setShowAvatar] = useState<boolean>(true);
   const [avatarImage, setAvatarImage] = useState<string>('');
-  const [customText, setCustomText] = useState<string>('');
+  const [customText, setCustomText] = useState<string>('Title');
 
   const handleAddComponent = (componentType: string) => {
     if (componentType === 'image') {
