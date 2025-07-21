@@ -54,6 +54,30 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
   const [mediaType, setMediaType] = useState('Image / Animation');
 
+  const [buttonSettings, setButtonSettings] = useState({
+    width: 100,
+    widthUnit: '%',
+    paddingTop: 16,
+    paddingBottom: 0,
+    backgroundColor: '#111111',
+    backgroundOpacity: 100,
+    roundness: 16,
+    borderWidth: 0,
+    borderColor: '#ffffff',
+    borderOpacity: 100
+  });
+
+  const [textSettings, setTextSettings] = useState({
+    color: '#FFFFFF',
+    colorOpacity: 100,
+    font: 'inherit',
+    fontSize: 18,
+    fontWeight: 'inherit',
+    align: 'Center',
+    lineHeight: 150,
+    lineHeightUnit: '%'
+  });
+
   const updateSetting = (key: string, value: any) => {
     setImageSettings(prev => ({ ...prev, [key]: value }));
     
@@ -61,6 +85,14 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     if (key === 'showAvatar' && onAvatarToggle) {
       onAvatarToggle(value);
     }
+  };
+
+  const updateButtonSetting = (key: string, value: any) => {
+    setButtonSettings(prev => ({ ...prev, [key]: value }));
+  };
+
+  const updateTextSetting = (key: string, value: any) => {
+    setTextSettings(prev => ({ ...prev, [key]: value }));
   };
 
   const handleMediaTypeChange = (newMediaType: string) => {
@@ -257,6 +289,252 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 </div>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Button Section - только для Audio */}
+        {mediaType === 'Audio' && (
+          <div className="p-4 border-b border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-white">BUTTON</h3>
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+
+            <div className="space-y-4">
+              {/* Width */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Width</label>
+                <div className="flex items-center gap-2">
+                  <Move className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={buttonSettings.width}
+                    onChange={(e) => updateButtonSetting('width', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <select
+                    value={buttonSettings.widthUnit}
+                    onChange={(e) => updateButtonSetting('widthUnit', e.target.value)}
+                    className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  >
+                    <option>%</option>
+                    <option>px</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Padding */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Padding</label>
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <input
+                      type="number"
+                      value={buttonSettings.paddingTop}
+                      onChange={(e) => updateButtonSetting('paddingTop', parseInt(e.target.value))}
+                      className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                    />
+                    <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                  </div>
+                  <div className="relative flex-1">
+                    <input
+                      type="number"
+                      value={buttonSettings.paddingBottom}
+                      onChange={(e) => updateButtonSetting('paddingBottom', parseInt(e.target.value))}
+                      className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                    />
+                    <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Background */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Background</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: buttonSettings.backgroundColor }}
+                  ></div>
+                  <input
+                    type="text"
+                    value={buttonSettings.backgroundColor}
+                    onChange={(e) => updateButtonSetting('backgroundColor', e.target.value)}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">{buttonSettings.backgroundOpacity}%</span>
+                </div>
+              </div>
+
+              {/* Roundness */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Roundness</label>
+                <div className="flex items-center gap-2">
+                  <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={buttonSettings.roundness}
+                    onChange={(e) => updateButtonSetting('roundness', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Border */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Border</label>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">W</span>
+                  <input
+                    type="number"
+                    value={buttonSettings.borderWidth}
+                    onChange={(e) => updateButtonSetting('borderWidth', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Border Color */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Border Color</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: buttonSettings.borderColor }}
+                  ></div>
+                  <input
+                    type="text"
+                    value={buttonSettings.borderColor}
+                    onChange={(e) => updateButtonSetting('borderColor', e.target.value)}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">{buttonSettings.borderOpacity}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Text Section - только для Audio */}
+        {mediaType === 'Audio' && (
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-white">TEXT</h3>
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+
+            <div className="space-y-4">
+              {/* Color */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Color</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: textSettings.color }}
+                  ></div>
+                  <input
+                    type="text"
+                    value={textSettings.color}
+                    onChange={(e) => updateTextSetting('color', e.target.value)}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">{textSettings.colorOpacity}%</span>
+                </div>
+              </div>
+
+              {/* Font */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Font</label>
+                <div className="relative">
+                  <select
+                    value={textSettings.font}
+                    onChange={(e) => updateTextSetting('font', e.target.value)}
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>inherit</option>
+                    <option>Arial</option>
+                    <option>Helvetica</option>
+                    <option>Times New Roman</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Font Size */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Font Size</label>
+                <div className="flex items-center gap-2">
+                  <Type className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={textSettings.fontSize}
+                    onChange={(e) => updateTextSetting('fontSize', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Font Weight */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Font Weight</label>
+                <div className="relative">
+                  <select
+                    value={textSettings.fontWeight}
+                    onChange={(e) => updateTextSetting('fontWeight', e.target.value)}
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>inherit</option>
+                    <option>normal</option>
+                    <option>bold</option>
+                    <option>lighter</option>
+                    <option>bolder</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Align */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Align</label>
+                <div className="relative">
+                  <select
+                    value={textSettings.align}
+                    onChange={(e) => updateTextSetting('align', e.target.value)}
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>Center</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Line Height */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Line Height</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    value={textSettings.lineHeight}
+                    onChange={(e) => updateTextSetting('lineHeight', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <select
+                    value={textSettings.lineHeightUnit}
+                    onChange={(e) => updateTextSetting('lineHeightUnit', e.target.value)}
+                    className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  >
+                    <option>%</option>
+                    <option>px</option>
+                  </select>
+                  <ChevronDown className="w-3 h-3 text-gray-400" />
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
