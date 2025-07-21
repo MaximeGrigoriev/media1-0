@@ -69,6 +69,9 @@ function App() {
     setAvatarImage(imageUrl);
   };
 
+  const handleTextChange = (text: string) => {
+    setAudioText(text);
+  };
   return (
     <div className="h-screen bg-gray-900 flex">
       <Sidebar onAddComponent={handleAddComponent} />
@@ -82,6 +85,7 @@ function App() {
         audioFile={audioFile}
         showAvatar={showAvatar}
         avatarImage={avatarImage}
+        audioText={audioText}
       />
       <PropertiesPanel 
         selectedComponent={selectedComponent} 
@@ -96,6 +100,7 @@ function App() {
           setShowAvatar(show);
         }}
         onAvatarImageUpload={handleAvatarImageUpload}
+        onTextChange={handleTextChange}
       />
     </div>
   );

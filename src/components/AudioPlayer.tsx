@@ -188,7 +188,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
         <div className="flex-1 min-w-0">
           {/* Title */}
           <h3 className="font-semibold text-gray-900 text-sm truncate mb-2">
-            {audioFile ? audioFile.name.replace(/\.[^/.]+$/, "") : title}
+            {title}
           </h3>
           
           {/* Waveform */}
