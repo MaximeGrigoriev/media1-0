@@ -267,6 +267,74 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             <ChevronDown className="w-4 h-4 text-gray-400" />
           </div>
 
+          {/* Button Color */}
+          <div>
+            <label className="block text-xs text-gray-400 mb-2">Button Color</label>
+            <div className="flex items-center gap-2">
+              <div 
+                className="w-6 h-6 rounded border border-gray-600"
+                style={{ backgroundColor: '#ffffff' }}
+              ></div>
+              <input
+                type="text"
+                value="#ffffff"
+                className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+              />
+              <span className="text-xs text-gray-400">100%</span>
+            </div>
+          </div>
+
+          {/* Button Icon Color */}
+          <div>
+            <label className="block text-xs text-gray-400 mb-2">Button Icon Color</label>
+            <div className="flex items-center gap-2">
+              <div 
+                className="w-6 h-6 rounded border border-gray-600"
+                style={{ backgroundColor: '#ffffff' }}
+              ></div>
+              <input
+                type="text"
+                value="#ffffff"
+                className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+              />
+              <span className="text-xs text-gray-400">100%</span>
+            </div>
+          </div>
+
+          {/* Audio Color */}
+          <div>
+            <label className="block text-xs text-gray-400 mb-2">Audio Color</label>
+            <div className="flex items-center gap-2">
+              <div 
+                className="w-6 h-6 rounded border border-gray-600"
+                style={{ backgroundColor: '#ffffff' }}
+              ></div>
+              <input
+                type="text"
+                value="#ffffff"
+                className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+              />
+              <span className="text-xs text-gray-400">100%</span>
+            </div>
+          </div>
+
+          {/* Audio Active Color */}
+          <div>
+            <label className="block text-xs text-gray-400 mb-2">Audio Active Color</label>
+            <div className="flex items-center gap-2">
+              <div 
+                className="w-6 h-6 rounded border border-gray-600"
+                style={{ backgroundColor: '#ffffff' }}
+              ></div>
+              <input
+                type="text"
+                value="#ffffff"
+                className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+              />
+              <span className="text-xs text-gray-400">100%</span>
+            </div>
+          </div>
+
           <div className="space-y-4">
             {/* Visible */}
             <div>
