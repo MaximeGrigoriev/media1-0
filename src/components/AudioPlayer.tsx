@@ -112,6 +112,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       ctx.fillRect(x, y, Math.max(1, barWidth - 1), barHeight);
     });
   }, [audioData, currentTime, duration, playerColors]);
+
   const togglePlayPause = () => {
     if (!audioRef.current) return;
 
@@ -220,13 +221,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           disabled={!audioUrl}
           className={`w-12 h-12 rounded-full flex items-center justify-center text-white transition-colors flex-shrink-0 ${
             audioUrl 
-              ? 'cursor-pointer' 
+              ? 'bg-green-500 hover:bg-green-600 cursor-pointer' 
               : 'bg-gray-400 cursor-not-allowed'
           }`}
-          style={{
-            backgroundColor: audioUrl ? playerColors.buttonColor : '#9ca3af',
-            color: playerColors.buttonIconColor
-          }}
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />
