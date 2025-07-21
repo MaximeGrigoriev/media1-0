@@ -419,7 +419,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <MoreHorizontal className="w-4 h-4 text-gray-500" />
                 <input
                   type="number"
-                  value={imageSettings.roundness}
+                  value={16}
                   onChange={(e) => updateSetting('roundness', parseInt(e.target.value))}
                   className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                 />
@@ -559,7 +559,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                   <span className="text-xs text-gray-500">W</span>
                   <input
                     type="number"
-                    value={0}
+                    value={2}
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">px</span>
