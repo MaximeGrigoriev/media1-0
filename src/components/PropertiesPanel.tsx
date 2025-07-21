@@ -260,6 +260,233 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           </div>
         )}
 
+        {/* Button Section - только для Audio */}
+        {mediaType === 'Audio' && (
+          <div className="p-4 border-b border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-white">BUTTON</h3>
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+
+            <div className="space-y-4">
+              {/* Width */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Width</label>
+                <div className="flex items-center gap-2">
+                  <Move className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={100}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">%</span>
+                </div>
+              </div>
+
+              {/* Padding */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Padding</label>
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <Move className="absolute left-1 top-1 w-3 h-3 text-gray-500 rotate-90" />
+                    <input
+                      type="number"
+                      value={16}
+                      className="w-full bg-gray-800 text-white text-sm px-6 py-1 rounded"
+                    />
+                    <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                  </div>
+                  <div className="relative flex-1">
+                    <Move className="absolute left-1 top-1 w-3 h-3 text-gray-500" />
+                    <input
+                      type="number"
+                      value={0}
+                      className="w-full bg-gray-800 text-white text-sm px-6 py-1 rounded"
+                    />
+                    <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Background */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Background</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: '#111111' }}
+                  ></div>
+                  <input
+                    type="text"
+                    value="#111111"
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">100%</span>
+                </div>
+              </div>
+
+              {/* Roundness */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Roundness</label>
+                <div className="flex items-center gap-2">
+                  <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={16}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Border */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Border</label>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-gray-500">W</span>
+                  <input
+                    type="number"
+                    value={0}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Border Color */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Border Color</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: '#ffffff' }}
+                  ></div>
+                  <input
+                    type="text"
+                    value="#ffffff"
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Text Section - только для Audio */}
+        {mediaType === 'Audio' && (
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-white">TEXT</h3>
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+
+            <div className="space-y-4">
+              {/* Color */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Color</label>
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-6 h-6 rounded border border-gray-600"
+                    style={{ backgroundColor: '#FFFFFF' }}
+                  ></div>
+                  <input
+                    type="text"
+                    value="#FFFFFF"
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">100%</span>
+                </div>
+              </div>
+
+              {/* Font */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Font</label>
+                <div className="relative">
+                  <select
+                    value="inherit"
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>inherit</option>
+                    <option>Arial</option>
+                    <option>Helvetica</option>
+                    <option>Times New Roman</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Font Size */}
+              <div>
+                <div className="flex items-center gap-2">
+                  <Type className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={18}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Font Weight */}
+              <div>
+                <div className="relative">
+                  <select
+                    value="inherit"
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>inherit</option>
+                    <option>normal</option>
+                    <option>bold</option>
+                    <option>lighter</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Align */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Align</label>
+                <div className="relative">
+                  <select
+                    value="Center"
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>Center</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Line Height */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Line Height</label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    value={150}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <div className="relative">
+                    <select
+                      value="%"
+                      className="bg-gray-800 text-white text-sm px-3 py-1 rounded appearance-none pr-6"
+                    >
+                      <option>%</option>
+                      <option>px</option>
+                      <option>em</option>
+                    </select>
+                    <ChevronDown className="absolute right-1 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Container Section */}
         <div className="p-4 border-b border-gray-700">
           <div className="flex items-center justify-between mb-4">
