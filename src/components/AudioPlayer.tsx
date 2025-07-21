@@ -6,13 +6,25 @@ interface AudioPlayerProps {
   title?: string;
   coverImage?: string;
   showAvatar?: boolean;
+  playerColors?: {
+    buttonColor: string;
+    buttonIconColor: string;
+    audioColor: string;
+    audioActiveColor: string;
+  };
 }
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({ 
   audioFile, 
   title = "Audio Track",
   coverImage = "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
-  showAvatar = true
+  showAvatar = true,
+  playerColors = {
+    buttonColor: '#10b981',
+    buttonIconColor: '#ffffff',
+    audioColor: '#d1d5db',
+    audioActiveColor: '#10b981'
+  }
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -96,11 +108,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       const barProgress = index / audioData.length;
       const isPlayed = barProgress <= progress;
       
-      ctx.fillStyle = isPlayed ? '#10b981' : '#d1d5db';
+      ctx.fillStyle = isPlayed ? playerColors.audioActiveColor : playerColors.audioColor;
       ctx.fillRect(x, y, Math.max(1, barWidth - 1), barHeight);
     });
-  }, [audioData, currentTime, duration]);
-
+  }, [audioData, currentTime, duration, playerColors]);
   const togglePlayPause = () => {
     if (!audioRef.current) return;
 
@@ -209,9 +220,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
           disabled={!audioUrl}
           className={`w-12 h-12 rounded-full flex items-center justify-center text-white transition-colors flex-shrink-0 ${
             audioUrl 
-              ? 'bg-green-500 hover:bg-green-600 cursor-pointer' 
+              ? 'cursor-pointer' 
               : 'bg-gray-400 cursor-not-allowed'
           }`}
+          style={{
+            backgroundColor: audioUrl ? playerColors.buttonColor : '#9ca3af',
+            color: playerColors.buttonIconColor
+          }}
         >
           {isPlaying ? (
             <Pause className="w-5 h-5" />

@@ -15,6 +15,12 @@ interface PhoneEmulatorProps {
   showAvatar?: boolean;
   avatarImage?: string;
   customText?: string;
+  playerColors?: {
+    buttonColor: string;
+    buttonIconColor: string;
+    audioColor: string;
+    audioActiveColor: string;
+  };
 }
 
 export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({ 
@@ -27,7 +33,13 @@ export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({
   audioFile,
   showAvatar = true,
   avatarImage,
-  customText = ''
+  customText = '',
+  playerColors = {
+    buttonColor: '#10b981',
+    buttonIconColor: '#ffffff',
+    audioColor: '#d1d5db',
+    audioActiveColor: '#10b981'
+  }
 }) => {
   const { rive, RiveComponent } = useRive({
     buffer: riveData,
@@ -95,6 +107,7 @@ export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({
                         title={customText || audioFile.name.replace(/\.[^/.]+$/, "")}
                         showAvatar={showAvatar}
                         coverImage={avatarImage}
+                        playerColors={playerColors}
                       />
                     ) : (
                       <div className="text-gray-400 text-center py-8">

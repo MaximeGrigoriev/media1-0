@@ -12,6 +12,12 @@ interface PropertiesPanelProps {
   onAvatarToggle?: (show: boolean) => void;
   onAvatarImageUpload?: (imageUrl: string) => void;
   onTextChange?: (text: string) => void;
+  onPlayerColorsChange?: (colors: {
+    buttonColor: string;
+    buttonIconColor: string;
+    audioColor: string;
+    audioActiveColor: string;
+  }) => void;
 }
 
 export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({ 
@@ -24,7 +30,8 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   showAvatar = true,
   onAvatarToggle,
   onAvatarImageUpload,
-  onTextChange
+  onTextChange,
+  onPlayerColorsChange
 }) => {
   const [imageSettings, setImageSettings] = useState({
     visible: 'Yes',
@@ -49,7 +56,11 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     opacity: 100,
     align: 'Center',
     showAvatar: false,
-    customText: 'Title'
+    customText: 'Title',
+    buttonColor: '#10b981',
+    buttonIconColor: '#ffffff',
+    audioColor: '#d1d5db',
+    audioActiveColor: '#10b981'
   });
 
   const [mediaType, setMediaType] = useState('Image / Animation');
@@ -60,6 +71,17 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     // Синхронизируем состояние аватара с родительским компонентом
     if (key === 'showAvatar' && onAvatarToggle) {
       onAvatarToggle(value);
+    }
+    
+    // Синхронизируем цвета плеера с родительским компонентом
+    if (['buttonColor', 'buttonIconColor', 'audioColor', 'audioActiveColor'].includes(key) && onPlayerColorsChange) {
+      const newSettings = { ...imageSettings, [key]: value };
+      onPlayerColorsChange({
+        buttonColor: newSettings.buttonColor,
+        buttonIconColor: newSettings.buttonIconColor,
+        audioColor: newSettings.audioColor,
+        audioActiveColor: newSettings.audioActiveColor
+      });
     }
   };
 
@@ -567,11 +589,12 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#ffffff' }}
+                    style={{ backgroundColor: imageSettings.buttonColor }}
                   ></div>
                   <input
                     type="text"
-                    value="#ffffff"
+                    value={imageSettings.buttonColor}
+                    onChange={(e) => updateSetting('buttonColor', e.target.value)}
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>
@@ -584,11 +607,12 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#ffffff' }}
+                    style={{ backgroundColor: imageSettings.buttonIconColor }}
                   ></div>
                   <input
                     type="text"
-                    value="#ffffff"
+                    value={imageSettings.buttonIconColor}
+                    onChange={(e) => updateSetting('buttonIconColor', e.target.value)}
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>
@@ -601,11 +625,12 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#ffffff' }}
+                    style={{ backgroundColor: imageSettings.audioColor }}
                   ></div>
                   <input
                     type="text"
-                    value="#ffffff"
+                    value={imageSettings.audioColor}
+                    onChange={(e) => updateSetting('audioColor', e.target.value)}
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>
@@ -618,11 +643,12 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#ffffff' }}
+                    style={{ backgroundColor: imageSettings.audioActiveColor }}
                   ></div>
                   <input
                     type="text"
-                    value="#ffffff"
+                    value={imageSettings.audioActiveColor}
+                    onChange={(e) => updateSetting('audioActiveColor', e.target.value)}
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>

@@ -13,6 +13,12 @@ function App() {
   const [showAvatar, setShowAvatar] = useState<boolean>(false);
   const [avatarImage, setAvatarImage] = useState<string>('');
   const [customText, setCustomText] = useState<string>('Title');
+  const [playerColors, setPlayerColors] = useState({
+    buttonColor: '#10b981',
+    buttonIconColor: '#ffffff',
+    audioColor: '#d1d5db',
+    audioActiveColor: '#10b981'
+  });
 
   const handleAddComponent = (componentType: string) => {
     if (componentType === 'image') {
@@ -74,6 +80,14 @@ function App() {
     setCustomText(text);
   };
 
+  const handlePlayerColorsChange = (colors: {
+    buttonColor: string;
+    buttonIconColor: string;
+    audioColor: string;
+    audioActiveColor: string;
+  }) => {
+    setPlayerColors(colors);
+  };
   return (
     <div className="h-screen bg-gray-900 flex">
       <Sidebar onAddComponent={handleAddComponent} />
@@ -88,6 +102,7 @@ function App() {
         showAvatar={showAvatar}
         avatarImage={avatarImage}
         customText={customText}
+        playerColors={playerColors}
       />
       <PropertiesPanel 
         selectedComponent={selectedComponent} 
@@ -103,6 +118,7 @@ function App() {
         }}
         onAvatarImageUpload={handleAvatarImageUpload}
         onTextChange={handleTextChange}
+        onPlayerColorsChange={handlePlayerColorsChange}
       />
     </div>
   );
