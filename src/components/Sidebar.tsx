@@ -26,7 +26,7 @@ const components: Component[] = [
   { id: 'chart', name: 'Chart', icon: <BarChart3 className="w-4 h-4" /> },
   { id: 'checkboxes', name: 'Checkboxes', icon: <CheckSquare className="w-4 h-4" /> },
   { id: 'container', name: 'Container', icon: <Layers className="w-4 h-4" /> },
-  { id: 'image', name: 'Image', icon: <ImageIcon className="w-4 h-4" /> },
+  { id: 'image', name: 'Media', icon: <ImageIcon className="w-4 h-4" /> },
   { id: 'input', name: 'Input', icon: <Type className="w-4 h-4" /> },
 ];
 
