@@ -455,7 +455,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         {mediaType === 'Audio' && (
           <div className="p-4 border-b border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-medium text-white">BUTTON</h3>
+              <h3 className="text-sm font-medium text-white">PLAYER</h3>
               <ChevronDown className="w-4 h-4 text-gray-400" />
             </div>
 
