@@ -527,11 +527,11 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#111111' }}
+                    style={{ backgroundColor: '#FFFFFF' }}
                   ></div>
                   <input
                     type="text"
-                    value="#111111"
+                    value="#FFFFFF"
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>
@@ -572,11 +572,11 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6 rounded border border-gray-600"
-                    style={{ backgroundColor: '#ffffff' }}
+                    style={{ backgroundColor: '#636874' }}
                   ></div>
                   <input
                     type="text"
-                    value="#ffffff"
+                    value="#636874"
                     className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
                   />
                   <span className="text-xs text-gray-400">100%</span>
