@@ -451,108 +451,110 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           </div>
         </div>
 
-        {/* Image Section */}
-        <div className="p-4">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-medium text-white">IMAGE</h3>
-            <ChevronDown className="w-4 h-4 text-gray-400" />
+        {/* Image Section - только для Image/Animation */}
+        {mediaType !== 'Audio' && (
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-medium text-white">IMAGE</h3>
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+
+            <div className="space-y-4">
+              {/* Width */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Width</label>
+                <div className="flex items-center gap-2">
+                  <Move className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={imageSettings.width}
+                    onChange={(e) => updateSetting('width', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <select
+                    value={imageSettings.widthUnit}
+                    onChange={(e) => updateSetting('widthUnit', e.target.value)}
+                    className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  >
+                    <option>%</option>
+                    <option>px</option>
+                  </select>
+                  <ChevronDown className="w-3 h-3 text-gray-400" />
+                </div>
+              </div>
+
+              {/* Height */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Height</label>
+                <div className="flex items-center gap-2">
+                  <Move className="w-4 h-4 text-gray-500 rotate-90" />
+                  <input
+                    type="number"
+                    value={imageSettings.height}
+                    onChange={(e) => updateSetting('height', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <select
+                    value={imageSettings.heightUnit}
+                    onChange={(e) => updateSetting('heightUnit', e.target.value)}
+                    className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  >
+                    <option>px</option>
+                    <option>%</option>
+                  </select>
+                  <ChevronDown className="w-3 h-3 text-gray-400" />
+                </div>
+              </div>
+
+              {/* Roundness */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Roundness</label>
+                <div className="flex items-center gap-2">
+                  <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                  <input
+                    type="number"
+                    value={imageSettings.imageRoundness}
+                    onChange={(e) => updateSetting('imageRoundness', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">px</span>
+                </div>
+              </div>
+
+              {/* Opacity */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Opacity</label>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 bg-gray-700 rounded"></div>
+                  <input
+                    type="number"
+                    value={imageSettings.opacity}
+                    onChange={(e) => updateSetting('opacity', parseInt(e.target.value))}
+                    className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="text-xs text-gray-400">%</span>
+                </div>
+              </div>
+
+              {/* Align */}
+              <div>
+                <label className="block text-xs text-gray-400 mb-2">Align</label>
+                <div className="relative">
+                  <select
+                    value={imageSettings.align}
+                    onChange={(e) => updateSetting('align', e.target.value)}
+                    className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                  >
+                    <option>Center</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="space-y-4">
-            {/* Width */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Width</label>
-              <div className="flex items-center gap-2">
-                <Move className="w-4 h-4 text-gray-500" />
-                <input
-                  type="number"
-                  value={imageSettings.width}
-                  onChange={(e) => updateSetting('width', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <select
-                  value={imageSettings.widthUnit}
-                  onChange={(e) => updateSetting('widthUnit', e.target.value)}
-                  className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                >
-                  <option>%</option>
-                  <option>px</option>
-                </select>
-                <ChevronDown className="w-3 h-3 text-gray-400" />
-              </div>
-            </div>
-
-            {/* Height */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Height</label>
-              <div className="flex items-center gap-2">
-                <Move className="w-4 h-4 text-gray-500 rotate-90" />
-                <input
-                  type="number"
-                  value={imageSettings.height}
-                  onChange={(e) => updateSetting('height', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <select
-                  value={imageSettings.heightUnit}
-                  onChange={(e) => updateSetting('heightUnit', e.target.value)}
-                  className="bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                >
-                  <option>px</option>
-                  <option>%</option>
-                </select>
-                <ChevronDown className="w-3 h-3 text-gray-400" />
-              </div>
-            </div>
-
-            {/* Roundness */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Roundness</label>
-              <div className="flex items-center gap-2">
-                <MoreHorizontal className="w-4 h-4 text-gray-500" />
-                <input
-                  type="number"
-                  value={imageSettings.imageRoundness}
-                  onChange={(e) => updateSetting('imageRoundness', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">px</span>
-              </div>
-            </div>
-
-            {/* Opacity */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Opacity</label>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-gray-700 rounded"></div>
-                <input
-                  type="number"
-                  value={imageSettings.opacity}
-                  onChange={(e) => updateSetting('opacity', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">%</span>
-              </div>
-            </div>
-
-            {/* Align */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Align</label>
-              <div className="relative">
-                <select
-                  value={imageSettings.align}
-                  onChange={(e) => updateSetting('align', e.target.value)}
-                  className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
-                >
-                  <option>Center</option>
-                  <option>Left</option>
-                  <option>Right</option>
-                </select>
-                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
