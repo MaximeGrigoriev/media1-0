@@ -199,7 +199,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
         {/* Content */}
         <div className="flex-1 min-w-0">
           {/* Title */}
-          <h3 className="font-semibold text-gray-900 text-sm truncate mb-2">
+          <h3 className="font-semibold text-gray-900 text-sm mb-2 break-words">
             {title}
           </h3>
           
