@@ -191,7 +191,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             <img
               src={coverImage}
               alt="Track cover"
-              className="w-16 h-16 rounded-full object-cover"
+              className="w-16 h-16 rounded object-cover"
             />
           </div>
         )}
