@@ -48,7 +48,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     imageRoundness: 0,
     opacity: 100,
     align: 'Center',
-    showAvatar: true,
+    showAvatar: false,
     customText: 'Title'
   });
 

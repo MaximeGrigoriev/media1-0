@@ -10,7 +10,7 @@ function App() {
   const [riveData, setRiveData] = useState<ArrayBuffer | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [mediaType, setMediaType] = useState<string>('Image / Animation');
-  const [showAvatar, setShowAvatar] = useState<boolean>(true);
+  const [showAvatar, setShowAvatar] = useState<boolean>(false);
   const [avatarImage, setAvatarImage] = useState<string>('');
   const [customText, setCustomText] = useState<string>('Title');
 
