@@ -14,6 +14,7 @@ interface PhoneEmulatorProps {
   audioFile?: File;
   showAvatar?: boolean;
   avatarImage?: string;
+  customText?: string;
 }
 
 export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({ 
@@ -25,7 +26,8 @@ export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({
   mediaType = 'Image / Animation',
   audioFile,
   showAvatar = true,
-  avatarImage
+  avatarImage,
+  customText = ''
 }) => {
   const { rive, RiveComponent } = useRive({
     buffer: riveData,
@@ -90,7 +92,7 @@ export const PhoneEmulator: React.FC<PhoneEmulatorProps> = ({
                     {audioFile ? (
                       <AudioPlayer 
                         audioFile={audioFile}
-                        title={audioFile.name.replace(/\.[^/.]+$/, "")}
+                        title={customText || audioFile.name.replace(/\.[^/.]+$/, "")}
                         showAvatar={showAvatar}
                         coverImage={avatarImage}
                       />

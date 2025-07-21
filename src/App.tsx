@@ -12,6 +12,7 @@ function App() {
   const [mediaType, setMediaType] = useState<string>('Image / Animation');
   const [showAvatar, setShowAvatar] = useState<boolean>(true);
   const [avatarImage, setAvatarImage] = useState<string>('');
+  const [customText, setCustomText] = useState<string>('');
 
   const handleAddComponent = (componentType: string) => {
     if (componentType === 'image') {
@@ -69,6 +70,10 @@ function App() {
     setAvatarImage(imageUrl);
   };
 
+  const handleTextChange = (text: string) => {
+    setCustomText(text);
+  };
+
   return (
     <div className="h-screen bg-gray-900 flex">
       <Sidebar onAddComponent={handleAddComponent} />
@@ -82,6 +87,7 @@ function App() {
         audioFile={audioFile}
         showAvatar={showAvatar}
         avatarImage={avatarImage}
+        customText={customText}
       />
       <PropertiesPanel 
         selectedComponent={selectedComponent} 
@@ -96,6 +102,7 @@ function App() {
           setShowAvatar(show);
         }}
         onAvatarImageUpload={handleAvatarImageUpload}
+        onTextChange={handleTextChange}
       />
     </div>
   );

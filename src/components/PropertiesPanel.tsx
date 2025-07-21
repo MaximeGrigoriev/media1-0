@@ -11,6 +11,7 @@ interface PropertiesPanelProps {
   showAvatar?: boolean;
   onAvatarToggle?: (show: boolean) => void;
   onAvatarImageUpload?: (imageUrl: string) => void;
+  onTextChange?: (text: string) => void;
 }
 
 export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({ 
@@ -22,7 +23,8 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   onMediaTypeChange,
   showAvatar = true,
   onAvatarToggle,
-  onAvatarImageUpload
+  onAvatarImageUpload,
+  onTextChange
 }) => {
   const [imageSettings, setImageSettings] = useState({
     visible: 'Yes',
@@ -46,7 +48,8 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
     imageRoundness: 0,
     opacity: 100,
     align: 'Center',
-    showAvatar: true
+    showAvatar: true,
+    customText: ''
   });
 
   const [mediaType, setMediaType] = useState('Image / Animation');
@@ -198,6 +201,14 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
               <label className="block text-xs text-gray-400 mb-2">Text</label>
               <input
                 type="text"
+                value={imageSettings.customText}
+                onChange={(e) => {
+                  const newText = e.target.value;
+                  updateSetting('customText', newText);
+                  if (onTextChange) {
+                    onTextChange(newText);
+                  }
+                }}
                 placeholder="Enter text..."
                 className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded border border-gray-600 focus:border-cyan-400 focus:outline-none"
               />
