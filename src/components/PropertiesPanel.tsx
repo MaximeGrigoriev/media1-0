@@ -193,6 +193,16 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         {/* Avatar Setting for Audio */}
         {mediaType === 'Audio' && (
           <div className="p-4 border-b border-gray-700">
+            {/* Text Section */}
+            <div className="mb-6">
+              <label className="block text-xs text-gray-400 mb-2">Text</label>
+              <input
+                type="text"
+                placeholder="Enter text..."
+                className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded border border-gray-600 focus:border-cyan-400 focus:outline-none"
+              />
+            </div>
+
             <div>
               <label className="block text-xs text-gray-400 mb-2">Avatar</label>
               <div className="flex gap-1">
@@ -236,20 +246,6 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
                 </div>
               </div>
             )}
-          </div>
-        )}
-
-        {/* Text Section */}
-        {mediaType === 'Audio' && (
-          <div className="p-4 border-b border-gray-700">
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Text</label>
-              <input
-                type="text"
-                placeholder="Enter text..."
-                className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded border border-gray-600 focus:border-cyan-400 focus:outline-none"
-              />
-            </div>
           </div>
         )}
 
