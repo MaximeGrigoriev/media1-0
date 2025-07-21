@@ -239,6 +239,18 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           </div>
         )}
 
+        {/* Text Section */}
+        <div className="p-4 border-b border-gray-700">
+          <div>
+            <label className="block text-xs text-gray-400 mb-2">Text</label>
+            <input
+              type="text"
+              placeholder="Enter text..."
+              className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded border border-gray-600 focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+        </div>
+
         {/* Container Section */}
         <div className="p-4 border-b border-gray-700">
           <div className="flex items-center justify-between mb-4">
