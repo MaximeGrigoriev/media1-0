@@ -260,6 +260,197 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
           </div>
         )}
 
+        {/* Container Section */}
+        <div className="p-4 border-b border-gray-700">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-medium text-white">CONTAINER</h3>
+            <ChevronDown className="w-4 h-4 text-gray-400" />
+          </div>
+
+          <div className="space-y-4">
+            {/* Visible */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Visible</label>
+              <div className="flex gap-1">
+                {['Yes', 'Conditional', 'No'].map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => updateSetting('visible', option)}
+                    className={`px-3 py-1 text-xs rounded ${
+                      imageSettings.visible === option
+                        ? 'bg-gray-600 text-white'
+                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Offset */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Offset</label>
+              <div className="grid grid-cols-4 gap-2">
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={imageSettings.offsetTop}
+                    onChange={(e) => updateSetting('offsetTop', parseInt(e.target.value))}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <Move className="absolute right-1 top-1 w-3 h-3 text-gray-500" />
+                </div>
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={imageSettings.offsetBottom}
+                    onChange={(e) => updateSetting('offsetBottom', parseInt(e.target.value))}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <Move className="absolute right-1 top-1 w-3 h-3 text-gray-500 rotate-90" />
+                </div>
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={imageSettings.offsetRight}
+                    onChange={(e) => updateSetting('offsetRight', parseInt(e.target.value))}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="absolute right-1 top-1 text-xs text-gray-500">%</span>
+                </div>
+                <div className="relative">
+                  <input
+                    type="number"
+                    value={0}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Position */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Position</label>
+              <div className="relative">
+                <select
+                  value={imageSettings.position}
+                  onChange={(e) => updateSetting('position', e.target.value)}
+                  className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
+                >
+                  <option>In content</option>
+                  <option>Absolute</option>
+                  <option>Fixed</option>
+                </select>
+                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Padding */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Padding</label>
+              <div className="flex gap-2">
+                <div className="relative flex-1">
+                  <input
+                    type="number"
+                    value={imageSettings.paddingLeft}
+                    onChange={(e) => updateSetting('paddingLeft', parseInt(e.target.value))}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="absolute right-1 top-1 text-xs text-gray-500">%</span>
+                </div>
+                <div className="relative flex-1">
+                  <input
+                    type="number"
+                    value={imageSettings.paddingRight}
+                    onChange={(e) => updateSetting('paddingRight', parseInt(e.target.value))}
+                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                  />
+                  <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Background */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Background</label>
+              <div className="flex items-center gap-2">
+                <div 
+                  className="w-6 h-6 rounded border border-gray-600"
+                  style={{ backgroundColor: imageSettings.backgroundColor }}
+                ></div>
+                <input
+                  type="text"
+                  value={imageSettings.backgroundColor}
+                  onChange={(e) => updateSetting('backgroundColor', e.target.value)}
+                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                />
+                <span className="text-xs text-gray-400">{imageSettings.backgroundOpacity}%</span>
+              </div>
+            </div>
+
+            {/* Roundness */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Roundness</label>
+              <div className="flex items-center gap-2">
+                <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                <input
+                  type="number"
+                  value={imageSettings.roundness}
+                  onChange={(e) => updateSetting('roundness', parseInt(e.target.value))}
+                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                />
+                <span className="text-xs text-gray-400">px</span>
+              </div>
+            </div>
+
+            {/* Border */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Border</label>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-gray-500">W</span>
+                <input
+                  type="number"
+                  value={imageSettings.borderWidth}
+                  onChange={(e) => updateSetting('borderWidth', parseInt(e.target.value))}
+                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                />
+                <span className="text-xs text-gray-400">px</span>
+              </div>
+            </div>
+
+            {/* Border Color */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Border Color</label>
+              <div className="flex items-center gap-2">
+                <div 
+                  className="w-6 h-6 rounded border border-gray-600"
+                  style={{ backgroundColor: imageSettings.borderColor }}
+                ></div>
+                <input
+                  type="text"
+                  value={imageSettings.borderColor}
+                  onChange={(e) => updateSetting('borderColor', e.target.value)}
+                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
+                />
+                <span className="text-xs text-gray-400">{imageSettings.borderOpacity}%</span>
+              </div>
+            </div>
+
+            {/* Z Index */}
+            <div>
+              <label className="block text-xs text-gray-400 mb-2">Z Index</label>
+              <input
+                type="number"
+                value={imageSettings.zIndex}
+                onChange={(e) => updateSetting('zIndex', parseInt(e.target.value))}
+                className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Button Section - только для Audio */}
         {mediaType === 'Audio' && (
           <div className="p-4 border-b border-gray-700">
@@ -486,197 +677,6 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
             </div>
           </div>
         )}
-
-        {/* Container Section */}
-        <div className="p-4 border-b border-gray-700">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-medium text-white">CONTAINER</h3>
-            <ChevronDown className="w-4 h-4 text-gray-400" />
-          </div>
-
-          <div className="space-y-4">
-            {/* Visible */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Visible</label>
-              <div className="flex gap-1">
-                {['Yes', 'Conditional', 'No'].map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => updateSetting('visible', option)}
-                    className={`px-3 py-1 text-xs rounded ${
-                      imageSettings.visible === option
-                        ? 'bg-gray-600 text-white'
-                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Offset */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Offset</label>
-              <div className="grid grid-cols-4 gap-2">
-                <div className="relative">
-                  <input
-                    type="number"
-                    value={imageSettings.offsetTop}
-                    onChange={(e) => updateSetting('offsetTop', parseInt(e.target.value))}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <Move className="absolute right-1 top-1 w-3 h-3 text-gray-500" />
-                </div>
-                <div className="relative">
-                  <input
-                    type="number"
-                    value={imageSettings.offsetBottom}
-                    onChange={(e) => updateSetting('offsetBottom', parseInt(e.target.value))}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <Move className="absolute right-1 top-1 w-3 h-3 text-gray-500 rotate-90" />
-                </div>
-                <div className="relative">
-                  <input
-                    type="number"
-                    value={imageSettings.offsetRight}
-                    onChange={(e) => updateSetting('offsetRight', parseInt(e.target.value))}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <span className="absolute right-1 top-1 text-xs text-gray-500">%</span>
-                </div>
-                <div className="relative">
-                  <input
-                    type="number"
-                    value={0}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Position */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Position</label>
-              <div className="relative">
-                <select
-                  value={imageSettings.position}
-                  onChange={(e) => updateSetting('position', e.target.value)}
-                  className="w-full bg-gray-800 text-white text-sm px-3 py-2 rounded appearance-none"
-                >
-                  <option>In content</option>
-                  <option>Absolute</option>
-                  <option>Fixed</option>
-                </select>
-                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-              </div>
-            </div>
-
-            {/* Padding */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Padding</label>
-              <div className="flex gap-2">
-                <div className="relative flex-1">
-                  <input
-                    type="number"
-                    value={imageSettings.paddingLeft}
-                    onChange={(e) => updateSetting('paddingLeft', parseInt(e.target.value))}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <span className="absolute right-1 top-1 text-xs text-gray-500">%</span>
-                </div>
-                <div className="relative flex-1">
-                  <input
-                    type="number"
-                    value={imageSettings.paddingRight}
-                    onChange={(e) => updateSetting('paddingRight', parseInt(e.target.value))}
-                    className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                  />
-                  <span className="absolute right-1 top-1 text-xs text-gray-500">px</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Background */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Background</label>
-              <div className="flex items-center gap-2">
-                <div 
-                  className="w-6 h-6 rounded border border-gray-600"
-                  style={{ backgroundColor: imageSettings.backgroundColor }}
-                ></div>
-                <input
-                  type="text"
-                  value={imageSettings.backgroundColor}
-                  onChange={(e) => updateSetting('backgroundColor', e.target.value)}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">{imageSettings.backgroundOpacity}%</span>
-              </div>
-            </div>
-
-            {/* Roundness */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Roundness</label>
-              <div className="flex items-center gap-2">
-                <MoreHorizontal className="w-4 h-4 text-gray-500" />
-                <input
-                  type="number"
-                  value={imageSettings.roundness}
-                  onChange={(e) => updateSetting('roundness', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">px</span>
-              </div>
-            </div>
-
-            {/* Border */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Border</label>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500">W</span>
-                <input
-                  type="number"
-                  value={imageSettings.borderWidth}
-                  onChange={(e) => updateSetting('borderWidth', parseInt(e.target.value))}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">px</span>
-              </div>
-            </div>
-
-            {/* Border Color */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Border Color</label>
-              <div className="flex items-center gap-2">
-                <div 
-                  className="w-6 h-6 rounded border border-gray-600"
-                  style={{ backgroundColor: imageSettings.borderColor }}
-                ></div>
-                <input
-                  type="text"
-                  value={imageSettings.borderColor}
-                  onChange={(e) => updateSetting('borderColor', e.target.value)}
-                  className="flex-1 bg-gray-800 text-white text-sm px-2 py-1 rounded"
-                />
-                <span className="text-xs text-gray-400">{imageSettings.borderOpacity}%</span>
-              </div>
-            </div>
-
-            {/* Z Index */}
-            <div>
-              <label className="block text-xs text-gray-400 mb-2">Z Index</label>
-              <input
-                type="number"
-                value={imageSettings.zIndex}
-                onChange={(e) => updateSetting('zIndex', parseInt(e.target.value))}
-                className="w-full bg-gray-800 text-white text-sm px-2 py-1 rounded"
-              />
-            </div>
-          </div>
-        </div>
 
         {/* Image Section - только для Image/Animation */}
         {mediaType !== 'Audio' && (
